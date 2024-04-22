@@ -11,5 +11,9 @@
     <string name="weekends">Выходные</string>
     <string name="hot_tickets">Горячие билеты</string>
     <string name="popular_direction">Популярное направление</string>
+    <string name="instanbul">Стамбул</string>
+    <string name="sochi">Сочи</string>
+    <string name="phuket">Пхукет</string>
+    <string name="back">Назад</string>
 
 </resources>

@@ -55,12 +55,13 @@
                         android:background="@drawable/textview"
                         android:drawableStart="@drawable/ic_plane"
                         android:drawablePadding="8dp"
-                        android:fontFamily="@font/sf_pro_bold"
+                        android:fontFamily="@font/sf_pro_regular"
                         android:imeOptions="actionDone"
-                        android:lines="1"
-                        android:text="@string/from"
-                        android:textSize="20sp"
                         android:inputType="text"
+                        android:lines="1"
+                        android:textFontWeight="600"
+                        android:text="@string/from"
+                        android:textSize="16sp"
                         />
 
                     <com.google.android.material.divider.MaterialDivider
@@ -76,11 +77,13 @@
                         android:background="@drawable/textview"
                         android:drawableStart="@drawable/ic_search"
                         android:drawablePadding="8dp"
-                        android:fontFamily="@font/sf_pro_bold"
+                        android:fontFamily="@font/sf_pro_regular"
                         android:hint="@string/to"
-                        android:lines="1"
+                        android:textFontWeight="600"
+                        android:textSize="16sp"
                         android:imeOptions="actionDone"
-                        android:textSize="20sp"
+                        android:lines="1"
+                        android:focusableInTouchMode="false"
                         />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -88,6 +91,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
                 android:orientation="horizontal"
                 >
 
@@ -100,7 +104,7 @@
                     >
 
                     <ImageView
-                        android:id="@+id/difficult_rout"
+                        android:id="@+id/iv_difficult_route"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/iv_route"
@@ -214,8 +218,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:padding="16dp"
                     android:orientation="vertical"
-                    android:padding="8dp"
                     >
 
                     <include

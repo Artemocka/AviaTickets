@@ -12,5 +12,16 @@
         android:name="com.dracul.task.screens.main.MainScreen"
         android:label="fragment_main_screen"
         tools:layout="@layout/fragment_main_screen"
+        >
+        <action
+            android:id="@+id/actionPlug"
+            app:destination="@id/plugFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/plugFragment"
+        android:name="com.dracul.task.screens.plug.PlugFragment"
+        android:label="fragment_plug"
+        tools:layout="@layout/fragment_plug"
         />
 </navigation>
