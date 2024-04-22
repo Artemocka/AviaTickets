@@ -2,17 +2,17 @@ package com.dracul.task.screens.main
 
 import android.content.Context
 import android.os.Bundle
-import android.text.Layout.Directions
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.FrameLayout
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.OnBackPressedDispatcher
 import androidx.activity.addCallback
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -49,6 +49,7 @@ class MainScreen : Fragment() {
                             }
                         }
                     }
+
                     false -> {
                         binding.included.bottomsheet.getBehavior().setHidden()
                         backPressCallback?.remove()
@@ -98,31 +99,47 @@ class MainScreen : Fragment() {
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {
                 }
             })
+            included.etTo.onDone {
 
-            included.ivDifficultRoute.setOnClickListener {
-                findNavController().navigate(R.id.plugFragment)
             }
-            included.ivAnywhere.setOnClickListener {
+
+            included.rootDifficultRoute.setOnClickListener {
+                viewModel.navigateToPlug(findNavController())
+            }
+            included.rootAnywhere.setOnClickListener {
                 viewModel.setAnywhere(binding.included.etTo, getString(R.string.anywhere))
             }
-            included.ivWeekends.setOnClickListener {
-                findNavController().navigate(R.id.plugFragment)
+            included.rootWeekends.setOnClickListener {
+                viewModel.navigateToPlug(findNavController())
+
             }
-            included.ivHotTickets.setOnClickListener {
-                findNavController().navigate(R.id.plugFragment)
+            included.rootHotTickets.setOnClickListener {
+                viewModel.navigateToPlug(findNavController())
             }
 
             included.item1.run {
+                val town = getString(R.string.instanbul)
                 ivPlace.setImageResource(R.drawable.istanbul)
-                tvTown.text = getString(R.string.instanbul)
+                tvTown.text = town
+                root.setOnClickListener {
+                    viewModel.setPlaceFromRecomendation(binding.included.etTo, town)
+                }
             }
             included.item2.run {
+                val town = getString(R.string.sochi)
                 ivPlace.setImageResource(R.drawable.sochi)
-                tvTown.text = getString(R.string.sochi)
+                tvTown.text = town
+                root.setOnClickListener {
+                    viewModel.setPlaceFromRecomendation(binding.included.etTo, town)
+                }
             }
             included.item3.run {
+                val town = getString(R.string.phuket)
                 ivPlace.setImageResource(R.drawable.phuket)
-                tvTown.text = getString(R.string.phuket)
+                tvTown.text = town
+                root.setOnClickListener {
+                    viewModel.setPlaceFromRecomendation(binding.included.etTo, town)
+                }
             }
         }
     }
@@ -145,4 +162,15 @@ class MainScreen : Fragment() {
         val imm = this.root.context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         imm?.hideSoftInputFromWindow(binding.root.windowToken, 0)
     }
+
+    fun EditText.onDone(callback: () -> Unit) {
+        setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                callback.invoke()
+                return@setOnEditorActionListener true
+            }
+            false
+        }
+    }
+
 }

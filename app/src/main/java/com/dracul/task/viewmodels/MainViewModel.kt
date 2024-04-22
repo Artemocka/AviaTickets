@@ -2,6 +2,9 @@ package com.dracul.task.viewmodels
 
 import android.widget.EditText
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import com.dracul.task.R
 import com.dracul.task.di.DaggerInjector
 import com.dracul.task.domain.usecase.GetOffers
 import dagger.Component
@@ -49,6 +52,14 @@ class MainViewModel : ViewModel() {
 
     fun showBottomsheet() {
         isBottomsheetVisible.value = true
+    }
+
+    fun setPlaceFromRecomendation(etTo: EditText, town: String) {
+        etTo.setText(town)
+    }
+
+    fun navigateToPlug(navController: NavController) {
+        navController.navigate(R.id.plugFragment)
     }
 
 

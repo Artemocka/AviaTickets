@@ -83,7 +83,6 @@
                         android:textSize="16sp"
                         android:imeOptions="actionDone"
                         android:lines="1"
-                        android:focusableInTouchMode="false"
                         />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -96,10 +95,11 @@
                 >
 
                 <LinearLayout
+                    android:id="@+id/root_difficult_route"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="center|top"
                     android:orientation="vertical"
                     >
 
@@ -122,10 +122,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/root_anywhere"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="center|top"
                     android:orientation="vertical"
                     >
 
@@ -149,11 +150,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/root_weekends"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center"
-
+                    android:gravity="center|top"
                     android:orientation="vertical"
                     >
 
@@ -177,10 +178,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/root_hot_tickets"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="center|top"
 
                     android:orientation="vertical"
                     >

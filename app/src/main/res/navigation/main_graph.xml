@@ -16,6 +16,18 @@
         <action
             android:id="@+id/actionPlug"
             app:destination="@id/plugFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_scale"
+            app:popExitAnim="@anim/fragment_exit_scale"
+            />
+        <action
+            android:id="@+id/actionTicketsOptions"
+            app:destination="@id/ticketsOptionsFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_scale"
+            app:popExitAnim="@anim/fragment_enter_scale"
             />
     </fragment>
     <fragment
@@ -24,4 +36,19 @@
         android:label="fragment_plug"
         tools:layout="@layout/fragment_plug"
         />
+    <fragment
+        android:id="@+id/ticketsOptionsFragment"
+        android:name="com.dracul.task.screens.ticketsoptions.TicketsOptionsFragment"
+        android:label="fragment_tickets_options"
+        tools:layout="@layout/fragment_tickets_options"
+        >
+        <argument
+            android:name="from"
+            app:argType="string"
+            />
+        <argument
+            android:name="to"
+            app:argType="string"
+            />
+    </fragment>
 </navigation>

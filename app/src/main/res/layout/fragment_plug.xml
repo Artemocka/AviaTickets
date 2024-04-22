@@ -18,7 +18,11 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment"
+            android:text="@string/plug"
+            android:textSize="22sp"
+            android:textFontWeight="600"
+            android:fontFamily="@font/sf_pro_regular"
+            android:textColor="@color/white"
             />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_back"

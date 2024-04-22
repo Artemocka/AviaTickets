@@ -1,9 +1,8 @@
 package com.dracul.task.data.storage
 
-import com.dracul.task.data.storage.api.OffersApi
 import com.dracul.task.domain.models.Offers
 import com.google.gson.Gson
-import javax.inject.Inject
+
 const val OFFERS="""{
   "offers": [
     {
@@ -33,9 +32,7 @@ const val OFFERS="""{
   ]
 }"""
 
-class NetworkOffersStorage @Inject constructor(
-    val api:OffersApi
-) : OffersStorage {
+class NetworkOffersStorage: OffersStorage {
     override fun get(): Offers {
         return Gson().fromJson(OFFERS,Offers::class.java)
     }
