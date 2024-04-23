@@ -100,7 +100,10 @@ class MainScreen : Fragment() {
                 }
             })
             included.etTo.onDone {
+                val from = binding.included.etFrom.text.toString()
+                val to = binding.included.etTo.text.toString()
 
+                viewModel.navigateToTicketsOption(findNavController(), from,to)
             }
 
             included.rootDifficultRoute.setOnClickListener {
@@ -163,7 +166,7 @@ class MainScreen : Fragment() {
         imm?.hideSoftInputFromWindow(binding.root.windowToken, 0)
     }
 
-    fun EditText.onDone(callback: () -> Unit) {
+    private fun EditText.onDone(callback: () -> Unit) {
         setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 callback.invoke()

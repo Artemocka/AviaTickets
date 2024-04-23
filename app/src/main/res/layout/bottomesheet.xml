@@ -83,7 +83,8 @@
                         android:textSize="16sp"
                         android:imeOptions="actionDone"
                         android:lines="1"
-                        />
+                        android:inputType="text"/>
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

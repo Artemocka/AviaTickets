@@ -16,5 +16,9 @@
     <string name="phuket">Пхукет</string>
     <string name="back">Назад</string>
     <string name="plug">Заглушка</string>
+    <string name="chip_back">обратно</string>
+    <string name="chip_passengers">1,эконом</string>
+    <string name="show_all">Показать все</string>
+    <string name="map">Карта</string>
 
 </resources>

@@ -30,11 +30,11 @@ interface CountryDependencies {
 class CountyViewModel : ViewModel() {
     @Inject
     lateinit var getTicketsOffers: GetTicketsOffers
-
     init {
         DaggerCountryComponent.builder().dependencies(dependencies = DaggerInjector.appComponent).build().inject(this@CountyViewModel)
     }
 
+    fun getTicketsOffers(index:Int)=getTicketsOffers.execute().tickets_offers[index]
 
 
 }

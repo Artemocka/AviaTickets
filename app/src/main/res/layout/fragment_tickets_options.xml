@@ -9,98 +9,223 @@
     tools:context=".screens.ticketsoptions.TicketsOptionsFragment"
     >
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_child"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:padding="16dp"
-        app:cardBackgroundColor="@color/grey_4"
-        app:cardCornerRadius="16dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         >
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_child"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
+            android:layout_margin="16dp"
             android:padding="16dp"
+            app:cardBackgroundColor="@color/grey_3"
+            app:cardCornerRadius="16dp"
             >
-
-            <ImageView
-                android:id="@+id/iv_search_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/ic_left_arrow"
-                />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="16dp"
                 >
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/iv_search_icon"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-
-                    <EditText
-                        android:id="@+id/et_from"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="9"
-                        android:background="@drawable/textview"
-                        android:fontFamily="@font/sf_pro_regular"
-                        android:text="@string/from"
-                        android:textFontWeight="600"
-                        android:textSize="16sp"
-                        />
-
-                    <ImageView
-                        android:id="@+id/iv_change"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_change"
-                        />
-                </LinearLayout>
-
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:dividerColor="@color/grey_4"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_left_arrow"
                     />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     >
 
-                    <EditText
-                        android:id="@+id/ed_to"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="9"
-                        android:background="@drawable/textview"
-                        android:fontFamily="@font/sf_pro_regular"
-                        android:text="@string/to"
-                        android:textFontWeight="600"
-                        android:textSize="16sp"
+                        android:orientation="horizontal"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_from"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="9"
+                            android:background="@drawable/editext"
+                            android:fontFamily="@font/sf_pro_regular"
+                            android:textColor="@color/white"
+                            android:textFontWeight="600"
+                            android:textSize="16sp"
+                            />
+
+                        <ImageView
+                            android:id="@+id/iv_change"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_change"
+                            />
+                    </LinearLayout>
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:dividerColor="@color/grey_4"
                         />
 
-                    <ImageView
-                        android:id="@+id/iv_clear"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_close"
-                        />
+                        android:orientation="horizontal"
+                        >
+
+                        <EditText
+                            android:id="@+id/ed_to"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10"
+                            android:background="@drawable/editext"
+                            android:fontFamily="@font/sf_pro_regular"
+                            android:textColor="@color/white"
+                            android:textFontWeight="600"
+                            android:textSize="16sp"
+                            />
+
+                        <ImageView
+                            android:id="@+id/iv_clear"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_close"
+                            />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            >
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:singleLine="true"
+                >
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chp_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chip"
+                    android:text="@string/chip_back"
+                    android:textColor="@color/white"
+                    app:chipBackgroundColor="@color/grey_3"
+                    app:chipCornerRadius="50dp"
+                    app:chipIcon="@drawable/ic_plus"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chp_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chip"
+                    android:text="24 фев, сб"
+                    android:textColor="@color/white"
+                    app:chipBackgroundColor="@color/grey_3"
+                    app:chipCornerRadius="50dp"
+                    tools:text="24 фев, сб"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chp_passengers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chip"
+                    android:text="@string/chip_passengers"
+                    android:textColor="@color/white"
+                    app:chipBackgroundColor="@color/grey_3"
+                    app:chipCornerRadius="50dp"
+                    app:chipIcon="@drawable/ic_human"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chp_settings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chip"
+                    app:chipBackgroundColor="@color/grey_3"
+                    android:textColor="@color/white"
+                    app:chipCornerRadius="50dp"
+                    android:text="@string/map"
+                    app:chipIcon="@drawable/ic_filter"
+                    />
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <androidx.cardview.widget.CardView
+            style="@style/Widget.Material3.CardView.Filled"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/grey_1"
+            app:cardCornerRadius="16dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_weight="600"
+                    android:fontFamily="@font/sf_pro_sembold"
+                    android:text="Прямые рельсы"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    />
+
+                <include
+                    android:id="@+id/item1"
+                    layout="@layout/item_popular_direction"
+                    />
+
+                <include
+                    android:id="@+id/item2"
+                    layout="@layout/item_popular_direction"
+                    />
+
+                <include
+                    android:id="@+id/item3"
+                    layout="@layout/item_popular_direction"
+                    />
+
+                <TextView
+                    android:id="@+id/btn_show_all"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:gravity="center"
+                    android:text="@string/show_all"
+                    android:textColor="@color/blue"
+                    android:textFontWeight="600"
+                    android:textSize="16sp"
+                    tools:text="Показать все"
+                    />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 </FrameLayout>
