@@ -25,7 +25,7 @@ object AppModule {
         return GetTickets(repository)
     }
     @Provides
-    fun provideRepository(newtworkSotrage:NetworkTicketsStorage):GetTicketsRepo{
+    fun provideTicketsRepository(newtworkSotrage:NetworkTicketsStorage):GetTicketsRepo{
         return GetTicketsImpl(newtworkSotrage)
     }
     @Provides

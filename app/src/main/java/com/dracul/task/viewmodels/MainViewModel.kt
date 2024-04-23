@@ -7,7 +7,8 @@ import androidx.navigation.fragment.findNavController
 import com.dracul.task.R
 import com.dracul.task.di.DaggerInjector
 import com.dracul.task.domain.usecase.GetOffers
-import com.dracul.task.screens.main.MainScreenDirections
+import com.dracul.task.screens.main.MainFragment
+import com.dracul.task.screens.main.MainFragmentDirections
 import dagger.Component
 import dagger.Module
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -60,11 +61,11 @@ class MainViewModel : ViewModel() {
     }
 
     fun navigateToPlug(navController: NavController) {
-        navController.navigate(MainScreenDirections.actionPlug())
+        navController.navigate(MainFragmentDirections.actionPlug())
     }
 
     fun navigateToTicketsOption(navController: NavController, from: String, to: String) {
-        navController.navigate(MainScreenDirections.actionTicketsOptions(from,to))
+        navController.navigate(MainFragmentDirections.actionTicketsOptions(from,to))
     }
 
 

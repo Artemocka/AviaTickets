@@ -9,31 +9,29 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.FrameLayout
-import androidx.activity.OnBackPressedCallback
-import androidx.activity.addCallback
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.dracul.task.R
-import com.dracul.task.databinding.FragmentMainScreenBinding
+import com.dracul.task.databinding.FragmentMainBinding
 import com.dracul.task.screens.main.recycler.OfferAdapter
 import com.dracul.task.viewmodels.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.coroutines.launch
 
 
-class MainScreen : Fragment() {
+class MainFragment : Fragment() {
 
-    private lateinit var binding: FragmentMainScreenBinding
+    private lateinit var binding: FragmentMainBinding
     private val viewModel by viewModels<MainViewModel>()
     private val adapter = OfferAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMainScreenBinding.inflate(layoutInflater)
+        binding = FragmentMainBinding.inflate(layoutInflater)
 
         lifecycleScope.launch {
             viewModel.isBottomsheetVisible.collect {
@@ -143,7 +141,7 @@ class MainScreen : Fragment() {
         this.state = BottomSheetBehavior.STATE_EXPANDED
     }
 
-    private fun FragmentMainScreenBinding.hideKeyboard() {
+    private fun FragmentMainBinding.hideKeyboard() {
         val imm = this.root.context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         imm?.hideSoftInputFromWindow(binding.root.windowToken, 0)
     }

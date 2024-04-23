@@ -9,9 +9,9 @@
 
     <fragment
         android:id="@+id/mainScreen"
-        android:name="com.dracul.task.screens.main.MainScreen"
+        android:name="com.dracul.task.screens.main.MainFragment"
         android:label="fragment_main_screen"
-        tools:layout="@layout/fragment_main_screen"
+        tools:layout="@layout/fragment_main"
         >
         <action
             android:id="@+id/actionPlug"
