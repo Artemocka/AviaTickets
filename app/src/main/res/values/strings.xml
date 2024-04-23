@@ -20,5 +20,6 @@
     <string name="chip_passengers">1,эконом</string>
     <string name="show_all">Показать все</string>
     <string name="map">Карта</string>
+    <string name="see_all_tickets">Посмотреть все билеты</string>
 
 </resources>

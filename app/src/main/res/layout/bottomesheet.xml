@@ -59,8 +59,9 @@
                         android:imeOptions="actionDone"
                         android:inputType="text"
                         android:lines="1"
-                        android:textFontWeight="600"
+                        android:singleLine="true"
                         android:text="@string/from"
+                        android:textFontWeight="600"
                         android:textSize="16sp"
                         />
 
@@ -79,11 +80,13 @@
                         android:drawablePadding="8dp"
                         android:fontFamily="@font/sf_pro_regular"
                         android:hint="@string/to"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:lines="1"
+                        android:singleLine="true"
                         android:textFontWeight="600"
                         android:textSize="16sp"
-                        android:imeOptions="actionDone"
-                        android:lines="1"
-                        android:inputType="text"/>
+                        />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -221,8 +224,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="16dp"
                     android:orientation="vertical"
+                    android:padding="16dp"
                     >
 
                     <include

@@ -29,45 +29,30 @@ class MainScreen : Fragment() {
     private lateinit var binding: FragmentMainScreenBinding
     private val viewModel by viewModels<MainViewModel>()
     private val adapter = OfferAdapter()
-    private var backPressCallback: OnBackPressedCallback? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainScreenBinding.inflate(layoutInflater)
 
-
-
         lifecycleScope.launch {
             viewModel.isBottomsheetVisible.collect {
                 when (it) {
                     true -> {
                         binding.included.bottomsheet.getBehavior().setExpanded()
-                        backPressCallback = requireActivity().onBackPressedDispatcher.addCallback {
-                            if (viewModel.isBottomsheetVisible.value) {
-                                viewModel.hideBottomsheet()
-                            }
-                        }
                     }
 
                     false -> {
                         binding.included.bottomsheet.getBehavior().setHidden()
-                        backPressCallback?.remove()
                     }
                 }
             }
         }
-
-
         binding.rvMusicSuggestion.adapter = adapter
         adapter.submitList(viewModel.getOffersList())
-
-
         binding.included.bottomsheet.getBehavior().isHideable = true
         binding.included.bottomsheet.getBehavior().setHidden()
         setBottomsheet()
-
-
         binding.edTo.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 binding.edTo.clearFocus()
@@ -75,7 +60,6 @@ class MainScreen : Fragment() {
                 viewModel.showBottomsheet()
             }
         }
-
         return binding.root
     }
 
@@ -86,31 +70,27 @@ class MainScreen : Fragment() {
             included.bottomsheet.getBehavior().addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
                     when (newState) {
-
                         BottomSheetBehavior.STATE_HIDDEN -> {
-                            backPressCallback?.remove()
                             viewModel.hideBottomsheet()
                         }
-
                         else -> {}
                     }
                 }
-
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                }
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {}
             })
             included.etTo.onDone {
                 val from = binding.included.etFrom.text.toString()
                 val to = binding.included.etTo.text.toString()
 
-                viewModel.navigateToTicketsOption(findNavController(), from,to)
+                viewModel.navigateToTicketsOption(findNavController(), from, to)
             }
-
             included.rootDifficultRoute.setOnClickListener {
                 viewModel.navigateToPlug(findNavController())
             }
             included.rootAnywhere.setOnClickListener {
-                viewModel.setAnywhere(binding.included.etTo, getString(R.string.anywhere))
+                val anywhere = getString(R.string.anywhere)
+                viewModel.setAnywhere(binding.included.etTo, anywhere)
+                viewModel.navigateToTicketsOption(findNavController(), binding.included.etFrom.text.toString(), anywhere)
             }
             included.rootWeekends.setOnClickListener {
                 viewModel.navigateToPlug(findNavController())
@@ -119,13 +99,13 @@ class MainScreen : Fragment() {
             included.rootHotTickets.setOnClickListener {
                 viewModel.navigateToPlug(findNavController())
             }
-
             included.item1.run {
                 val town = getString(R.string.instanbul)
                 ivPlace.setImageResource(R.drawable.istanbul)
                 tvTown.text = town
                 root.setOnClickListener {
                     viewModel.setPlaceFromRecomendation(binding.included.etTo, town)
+                    viewModel.navigateToTicketsOption(findNavController(), binding.included.etFrom.text.toString(), town)
                 }
             }
             included.item2.run {
@@ -134,6 +114,7 @@ class MainScreen : Fragment() {
                 tvTown.text = town
                 root.setOnClickListener {
                     viewModel.setPlaceFromRecomendation(binding.included.etTo, town)
+                    viewModel.navigateToTicketsOption(findNavController(), binding.included.etFrom.text.toString(), town)
                 }
             }
             included.item3.run {
@@ -142,6 +123,7 @@ class MainScreen : Fragment() {
                 tvTown.text = town
                 root.setOnClickListener {
                     viewModel.setPlaceFromRecomendation(binding.included.etTo, town)
+                    viewModel.navigateToTicketsOption(findNavController(), binding.included.etFrom.text.toString(), town)
                 }
             }
         }

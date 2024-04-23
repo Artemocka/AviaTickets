@@ -60,7 +60,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun navigateToPlug(navController: NavController) {
-        navController.navigate(R.id.plugFragment)
+        navController.navigate(MainScreenDirections.actionPlug())
     }
 
     fun navigateToTicketsOption(navController: NavController, from: String, to: String) {
