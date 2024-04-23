@@ -50,5 +50,36 @@
             android:name="to"
             app:argType="string"
             />
+        <action
+            android:id="@+id/actionAllTickets"
+            app:destination="@id/allTicketsFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_scale"
+            app:popExitAnim="@anim/fragment_exit_scale"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/allTicketsFragment"
+        android:name="com.dracul.task.screens.alltickets.AllTicketsFragment"
+        android:label="fragment_all_tickets"
+        tools:layout="@layout/fragment_all_tickets"
+        >
+        <argument
+            android:name="to"
+            app:argType="string"
+            />
+        <argument
+            android:name="from"
+            app:argType="string"
+            />
+        <argument
+            android:name="arrivalDate"
+            app:argType="string"
+            />
+        <argument
+            android:name="passengers"
+            app:argType="string"
+            />
     </fragment>
 </navigation>

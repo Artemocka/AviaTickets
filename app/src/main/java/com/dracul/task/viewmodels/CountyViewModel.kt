@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 import com.dracul.task.di.DaggerInjector
 import com.dracul.task.domain.usecase.GetOffers
 import com.dracul.task.domain.usecase.GetTicketsOffers
+import com.dracul.task.screens.ticketsoptions.TicketsOptionsFragmentDirections
 import dagger.Component
 import dagger.Module
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -41,6 +42,7 @@ class CountyViewModel : ViewModel() {
     }
 
     fun getTicketsOffers(index: Int) = getTicketsOffers.execute().tickets_offers[index]
+
     fun setBackTicketDate(timeInMillis: Long) {
         backTicketDate.value = timeInMillis
     }
@@ -58,6 +60,13 @@ class CountyViewModel : ViewModel() {
         etFrom.text = etTo.text
         etTo.text = temp
 
+    }
+
+    fun navigateToAllTickets(navController: NavController, from: String, to: String, date: String, passengers: String) {
+        val action = TicketsOptionsFragmentDirections.actionAllTickets(
+            to, from, date, passengers
+        )
+        navController.navigate(action)
     }
 
 

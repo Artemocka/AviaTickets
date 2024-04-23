@@ -1,16 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.AllTicketsFragment"
+    tools:context=".screens.alltickets.AllTicketsFragment"
+    android:background="@color/black"
     >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        />
-
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       >
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:gravity="center"
+           android:layout_margin="16dp"
+           android:paddingVertical="8dp"
+           android:background="@color/grey_2"
+           >
+           <ImageView
+               android:id="@+id/iv_back_arrow"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/ic_left_arrow"
+               app:tint="@color/blue"
+               android:layout_marginEnd="8dp"
+               />
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+               <TextView
+                   android:id="@+id/tv_direction"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:fontFamily="@font/sf_pro_medium"
+                   android:layout_weight="600"
+                   android:textSize="16sp"
+                   android:textColor="@color/white"
+                   tools:text="Москва-Сочи"
+                   />
+               <TextView
+                   android:id="@+id/tv_date_passengers"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:fontFamily="@font/sf_pro_regular"
+                   android:layout_weight="600"
+                   android:textSize="14sp"
+                   android:textColor="@color/grey_6"
+                   android:textStyle="italic"
+                   tools:text="23 февраля, 1 пассажир"
+                   />
+           </LinearLayout>
+       </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTickets"
+            android:layout_width="match_parent"
+            android:clipToPadding="false"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_marginHorizontal="16dp"
+            android:paddingTop="8dp"
+            />
+   </LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="50dp"
+        android:layout_gravity="center|bottom"
+        app:cardBackgroundColor="@color/blue"
+        android:layout_margin="16dp"
+        >
+        <LinearLayout
+            android:id="@+id/bottomButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_filter"
+                android:text="@string/filter"
+                android:fontFamily="@font/sf_pro_regular"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:layout_marginEnd="16dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_chart"
+                android:text="График цен"
+                android:fontFamily="@font/sf_pro_regular"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </FrameLayout>

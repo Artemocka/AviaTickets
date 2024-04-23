@@ -92,6 +92,12 @@ class TicketsOptionsFragment : Fragment() {
                 etTo.text.clear()
             }
 
+            seeAllTickets.setOnClickListener {
+                val date = chpDate.text.toString()
+                val passengers = chpPassengers.text.toString()
+                viewModel.navigateToAllTickets(findNavController(),from,to,date,passengers)
+            }
+
             item1.run {
                 val ticketsOffer = viewModel.getTicketsOffers(0)
                 ivCircle.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.red))

@@ -21,5 +21,6 @@
     <string name="show_all">Показать все</string>
     <string name="map">Карта</string>
     <string name="see_all_tickets">Посмотреть все билеты</string>
+    <string name="filter">Фильтр</string>
 
 </resources>
