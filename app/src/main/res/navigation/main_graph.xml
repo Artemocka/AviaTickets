@@ -29,6 +29,22 @@
             app:popEnterAnim="@anim/fragment_enter_scale"
             app:popExitAnim="@anim/fragment_exit_scale"
             />
+        <action
+            android:id="@+id/actionHotelsToPlug"
+            app:destination="@id/plugFragment"
+            />
+        <action
+            android:id="@+id/actionCorocheToPlug"
+            app:destination="@id/plugFragment"
+            />
+        <action
+            android:id="@+id/actionSubscriptionsToPlug"
+            app:destination="@id/plugFragment"
+            />
+        <action
+            android:id="@+id/actionProfileToPlug"
+            app:destination="@id/plugFragment"
+            />
     </fragment>
     <fragment
         android:id="@+id/plugFragment"

@@ -22,5 +22,10 @@
     <string name="map">Карта</string>
     <string name="see_all_tickets">Посмотреть все билеты</string>
     <string name="filter">Фильтр</string>
+    <string name="aviatickets">Авиабилеты</string>
+    <string name="profile">Профиль</string>
+    <string name="subsciptions">Подписки</string>
+    <string name="coroche">Короче</string>
+    <string name="hotels">Отели</string>
 
 </resources>
