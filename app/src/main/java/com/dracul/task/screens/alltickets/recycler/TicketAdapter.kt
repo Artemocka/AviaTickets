@@ -69,7 +69,7 @@ class TicketAdapter : ListAdapter<Ticket, TicketAdapter.ViewHolder>(TicketItemCa
                     tvTransfer.text="Без пересадок"
                 }
 
-                tvPrice.text = "${item.price.toSplitetString()} ₽ "
+                tvPrice.text = "${item.price.getSplitted()} ₽ "
             }
         }
 
@@ -92,21 +92,7 @@ class TicketAdapter : ListAdapter<Ticket, TicketAdapter.ViewHolder>(TicketItemCa
            }
 
         }
-        fun Price.toSplitetString():String{
-            var result = ""
-            var counter =0
-            val price = this.value.toString()
-            for (i in price.reversed()){
-                if (counter!=2){
-                    result+=i
-                    counter++
-                }else{
-                    result+=i+" "
-                    counter++
-                }
-            }
-            return result.trim().reversed()
-        }
+
 
     }
 

@@ -40,9 +40,8 @@ class OfferAdapter : ListAdapter<Offer, OfferAdapter.ViewHolder>(OfferItemCallBa
     class ViewHolder(private val binding: ItemOfferBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Offer) {
             binding.run {
-                val price = item.price.value
                 tvTitle.text = item.title
-                tvPrice.text = "от $price ₽"
+                tvPrice.text = "от ${item.price.getSplitted()} ₽"
                 tvTown.text = item.town
                 when(item.id){
                     1->{

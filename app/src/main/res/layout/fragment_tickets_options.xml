@@ -129,6 +129,7 @@
                     android:textColor="@color/white"
                     app:chipBackgroundColor="@color/grey_3"
                     app:chipCornerRadius="50dp"
+
                     app:chipIcon="@drawable/ic_plus"
                     app:chipStrokeWidth="0dp"
                     />

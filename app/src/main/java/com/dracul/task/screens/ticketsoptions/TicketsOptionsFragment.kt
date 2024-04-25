@@ -1,9 +1,11 @@
 package com.dracul.task.screens.ticketsoptions
 
 import android.content.res.ColorStateList
+import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
 import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +19,7 @@ import com.dracul.task.R
 import com.dracul.task.databinding.FragmentTicketsOptionsBinding
 import com.dracul.task.domain.models.Price
 import com.dracul.task.viewmodels.CountyViewModel
+import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -68,9 +71,14 @@ class TicketsOptionsFragment : Fragment() {
                 }
             }
 
-            chpBack.setOnClickListener {
-                dateBackPicker.show(childFragmentManager, "datePicker")
+            chpBack.run {
+                chpBack.setItalic()
+                setOnClickListener {
+                    dateBackPicker.show(childFragmentManager, "datePicker")
+                }
             }
+            chpPassengers.setItalic()
+            chpSettings.setItalic()
             chpDate.setOnClickListener {
                 datePicker.show(childFragmentManager, "datePicker")
             }
@@ -95,28 +103,28 @@ class TicketsOptionsFragment : Fragment() {
             seeAllTickets.setOnClickListener {
                 val date = chpDate.text.toString()
                 val passengers = chpPassengers.text.toString()
-                viewModel.navigateToAllTickets(findNavController(),from,to,date,passengers)
+                viewModel.navigateToAllTickets(findNavController(), from, to, date, passengers)
             }
 
             item1.run {
                 val ticketsOffer = viewModel.getTicketsOffers(0)
                 ivCircle.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.red))
                 tvTitle.text = ticketsOffer.title
-                tvPrice.text = "${ticketsOffer.price.toSplitetString()} ₽ "
+                tvPrice.text = "${ticketsOffer.price.getSplitted()} ₽ "
                 tvTimeRange.text = ticketsOffer.timeRange.concatStrings()
             }
             item2.run {
                 val ticketsOffer = viewModel.getTicketsOffers(1)
                 ivCircle.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue))
                 tvTitle.text = ticketsOffer.title
-                tvPrice.text = "${ticketsOffer.price.toSplitetString()} ₽ "
+                tvPrice.text = "${ticketsOffer.price.getSplitted()} ₽ "
                 tvTimeRange.text = ticketsOffer.timeRange.concatStrings()
             }
             item3.run {
                 val ticketsOffer = viewModel.getTicketsOffers(2)
                 ivCircle.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
                 tvTitle.text = ticketsOffer.title
-                tvPrice.text = "${ticketsOffer.price.toSplitetString()} ₽ "
+                tvPrice.text = "${ticketsOffer.price.getSplitted()} ₽ "
                 tvTimeRange.text = ticketsOffer.timeRange.concatStrings()
             }
         }
@@ -127,14 +135,29 @@ class TicketsOptionsFragment : Fragment() {
         val dateFormat = SimpleDateFormat("dd MMM',' E", Locale("ru", "RU"))
         val formattedDate = dateFormat.format(calendar.time).replace(".", "").toSpannable()
         val spannable = formattedDate.toSpannable()
+        val start = 0
+        val end = spannable.length
+        spannable.setSpan(
+            StyleSpan(Typeface.ITALIC), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
         spannable.setSpan(
             ForegroundColorSpan(
                 ContextCompat.getColor(
                     requireContext(), R.color.grey_6
                 )
-            ), formattedDate.length - 2, formattedDate.length, Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+            ), end - 2, end, Spannable.SPAN_EXCLUSIVE_INCLUSIVE
         )
         return spannable
+    }
+
+    private fun Chip.setItalic() {
+        val spannable = this.text.toSpannable()
+        val start = 0
+        val end = spannable.length
+        spannable.setSpan(
+            StyleSpan(Typeface.ITALIC), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        this.text = spannable
     }
 
     private fun List<String>.concatStrings(): String {
@@ -143,19 +166,5 @@ class TicketsOptionsFragment : Fragment() {
         return result
     }
 
-    private fun Price.toSplitetString():String{
-        var result = ""
-        var counter =0
-        val price = this.value.toString()
-        for (i in price.reversed()){
-            if (counter!=2){
-                result+=i
-                counter++
-            }else{
-                result+=i+" "
-                counter++
-            }
-        }
-        return result.trim().reversed()
-    }
+
 }

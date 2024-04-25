@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Task"
+        android:theme="@style/Base.Theme.Task"
         tools:targetApi="31"
         android:name=".App"
         >
@@ -21,6 +21,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan"
+            android:theme="@style/Base.Theme.Task"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
