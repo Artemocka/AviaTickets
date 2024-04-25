@@ -32,18 +32,34 @@
         <action
             android:id="@+id/actionHotelsToPlug"
             app:destination="@id/plugFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_scale"
+            app:popExitAnim="@anim/fragment_exit_scale"
             />
         <action
             android:id="@+id/actionCorocheToPlug"
             app:destination="@id/plugFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_scale"
+            app:popExitAnim="@anim/fragment_exit_scale"
             />
         <action
             android:id="@+id/actionSubscriptionsToPlug"
             app:destination="@id/plugFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_scale"
+            app:popExitAnim="@anim/fragment_exit_scale"
             />
         <action
             android:id="@+id/actionProfileToPlug"
             app:destination="@id/plugFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_scale"
+            app:popExitAnim="@anim/fragment_exit_scale"
             />
     </fragment>
     <fragment

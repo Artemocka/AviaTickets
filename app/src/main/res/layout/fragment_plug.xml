@@ -32,8 +32,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginVertical="16dp"
+            android:textColor="@color/white"
             android:backgroundTint="@color/grey_3"
             android:text="@string/back"
+            app:rippleColor="@color/grey_6"
             />
 
 

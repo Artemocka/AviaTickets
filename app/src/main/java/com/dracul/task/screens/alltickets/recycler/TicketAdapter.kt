@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
 import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -63,7 +64,9 @@ class TicketAdapter : ListAdapter<Ticket, TicketAdapter.ViewHolder>(TicketItemCa
                 }
                 tvTimeTransfer.text = calculateFlightTime(item.departure.date,item.arrival.date)
                 item.hasTransfer.run {
-                    tvTransfer.text=if(this) "С пересадками" else "Без пересадок"
+                    tvTransfer.isVisible=!this
+                    tvSlash.isVisible=!this
+                    tvTransfer.text="Без пересадок"
                 }
 
                 tvPrice.text = "${item.price.toSplitetString()} ₽ "

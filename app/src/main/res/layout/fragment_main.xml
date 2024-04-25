@@ -106,7 +106,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/textview"
-                                android:text="@string/to"
+                                android:hint="@string/to"
                                 android:fontFamily="@font/sf_pro_regular"
                                 android:textSize="16sp"
                                 android:textFontWeight="600"

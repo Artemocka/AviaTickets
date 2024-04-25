@@ -39,15 +39,14 @@ class AllTicketsFragment : Fragment() {
 
         binding = FragmentAllTicketsBinding.inflate(layoutInflater)
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars() and  WindowInsetsCompat.Type.displayCutout())
-            v.updatePaddingRelative(bottom = systemBars.bottom )
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars() and WindowInsetsCompat.Type.displayCutout())
             insets
         }
 
         binding.run {
             rvTickets.adapter = adapter
             tvDatePassengers.text = "$date, $passengers"
-            tvDirection.text = "$from—$to"
+            tvDirection.text = "$from — $to"
             ivBackArrow.setOnClickListener {
                 viewModel.navigateBack(findNavController())
             }

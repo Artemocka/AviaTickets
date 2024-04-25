@@ -66,21 +66,18 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_marginHorizontal="16dp"
             android:paddingTop="8dp"
+            android:paddingBottom="28dp"
             />
    </LinearLayout>
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="50dp"
-        android:layout_gravity="center|bottom"
-        app:cardBackgroundColor="@color/blue"
-        android:layout_margin="16dp"
-        >
+
         <LinearLayout
+            android:background="@drawable/bottom_buttons"
             android:id="@+id/bottomButtons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="8dp"
             android:padding="8dp"
             >
             <TextView
@@ -105,5 +102,4 @@
                 android:textStyle="italic"
                 />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
 </FrameLayout>
