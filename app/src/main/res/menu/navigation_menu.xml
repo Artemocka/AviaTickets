@@ -7,22 +7,22 @@
         android:icon="@drawable/ic_tickets"
         android:title="@string/aviatickets"/>
     <item
-        android:id="@+id/actionHotelsToPlug"
+        android:id="@+id/plugFragment2"
         android:enabled="true"
         android:icon="@drawable/ic_hotels"
         android:title="@string/hotels"/>
     <item
-        android:id="@+id/actionCorocheToPlug"
+        android:id="@+id/plugFragment3"
         android:enabled="true"
         android:icon="@drawable/ic_coroche"
         android:title="@string/coroche"/>
     <item
-        android:id="@+id/actionSubscriptionsToPlug"
+        android:id="@+id/plugFragment4"
         android:enabled="true"
         android:icon="@drawable/ic_subsciptions"
         android:title="@string/subsciptions"/>
     <item
-        android:id="@+id/actionProfileToPlug"
+        android:id="@+id/plugFragment5"
         android:enabled="true"
         android:icon="@drawable/ic_profile"
         android:title="@string/profile"/>
