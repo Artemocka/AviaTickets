@@ -11,7 +11,6 @@ import android.widget.EditText
 import android.widget.FrameLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.dracul.task.R
@@ -20,13 +19,23 @@ import com.dracul.task.screens.main.recycler.OfferAdapter
 import com.dracul.task.viewmodels.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel by viewModel<MainViewModel>()
     private val adapter = OfferAdapter()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        lifecycleScope.launch {
+            viewModel.offers.collect {
+                adapter.submitList(it)
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -47,7 +56,6 @@ class MainFragment : Fragment() {
             }
         }
         binding.rvMusicSuggestion.adapter = adapter
-        adapter.submitList(viewModel.getOffersList())
         binding.included.bottomsheet.getBehavior().isHideable = true
         binding.included.bottomsheet.getBehavior().setHidden()
         setBottomsheet()
@@ -63,19 +71,21 @@ class MainFragment : Fragment() {
 
 
     private fun setBottomsheet() {
-
         binding.run {
-            included.bottomsheet.getBehavior().addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-                override fun onStateChanged(bottomSheet: View, newState: Int) {
-                    when (newState) {
-                        BottomSheetBehavior.STATE_HIDDEN -> {
-                            viewModel.hideBottomsheet()
+            included.bottomsheet.getBehavior()
+                .addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+                    override fun onStateChanged(bottomSheet: View, newState: Int) {
+                        when (newState) {
+                            BottomSheetBehavior.STATE_HIDDEN -> {
+                                viewModel.hideBottomsheet()
+                            }
+
+                            else -> {}
                         }
-                        else -> {}
                     }
-                }
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {}
-            })
+
+                    override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+                })
             included.etTo.onDone {
                 val from = binding.included.etFrom.text.toString()
                 val to = binding.included.etTo.text.toString()
@@ -88,7 +98,11 @@ class MainFragment : Fragment() {
             included.rootAnywhere.setOnClickListener {
                 val anywhere = getString(R.string.anywhere)
                 viewModel.setAnywhere(binding.included.etTo, anywhere)
-                viewModel.navigateToTicketsOption(findNavController(), binding.included.etFrom.text.toString(), anywhere)
+                viewModel.navigateToTicketsOption(
+                    findNavController(),
+                    binding.included.etFrom.text.toString(),
+                    anywhere
+                )
             }
             included.rootWeekends.setOnClickListener {
                 viewModel.navigateToPlug(findNavController())
@@ -103,7 +117,11 @@ class MainFragment : Fragment() {
                 tvTown.text = town
                 root.setOnClickListener {
                     viewModel.setPlaceFromRecomendation(binding.included.etTo, town)
-                    viewModel.navigateToTicketsOption(findNavController(), binding.included.etFrom.text.toString(), town)
+                    viewModel.navigateToTicketsOption(
+                        findNavController(),
+                        binding.included.etFrom.text.toString(),
+                        town
+                    )
                 }
             }
             included.item2.run {
@@ -112,7 +130,11 @@ class MainFragment : Fragment() {
                 tvTown.text = town
                 root.setOnClickListener {
                     viewModel.setPlaceFromRecomendation(binding.included.etTo, town)
-                    viewModel.navigateToTicketsOption(findNavController(), binding.included.etFrom.text.toString(), town)
+                    viewModel.navigateToTicketsOption(
+                        findNavController(),
+                        binding.included.etFrom.text.toString(),
+                        town
+                    )
                 }
             }
             included.item3.run {
@@ -121,7 +143,11 @@ class MainFragment : Fragment() {
                 tvTown.text = town
                 root.setOnClickListener {
                     viewModel.setPlaceFromRecomendation(binding.included.etTo, town)
-                    viewModel.navigateToTicketsOption(findNavController(), binding.included.etFrom.text.toString(), town)
+                    viewModel.navigateToTicketsOption(
+                        findNavController(),
+                        binding.included.etFrom.text.toString(),
+                        town
+                    )
                 }
             }
         }
@@ -142,7 +168,8 @@ class MainFragment : Fragment() {
     }
 
     private fun FragmentMainBinding.hideKeyboard() {
-        val imm = this.root.context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        val imm =
+            this.root.context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         imm?.hideSoftInputFromWindow(binding.root.windowToken, 0)
     }
 

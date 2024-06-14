@@ -1,24 +1,26 @@
 [versions]
-agp = "8.3.2"
+agp = "8.4.2"
 daggerCompilerVersion = "2.51.1"
 daggerVersion = "2.51.1"
-kotlin = "1.9.0"
-coreKtx = "1.13.0"
+kotlin = "1.9.22"
+coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-appcompat = "1.6.1"
-material = "1.11.0"
+appcompat = "1.7.0"
+material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
 navigationFragmentKtx = "2.7.7"
 retrofit = "2.11.0"
+jetbrainsKotlinJvm = "1.9.23"
+koin = "3.5.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationFragmentKtx" }
-
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 dagger-compiler-v2511 = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerCompilerVersion" }
 dagger-v2511 = { module = "com.google.dagger:dagger", version.ref = "daggerVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -29,8 +31,10 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 

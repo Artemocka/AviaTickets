@@ -1,47 +1,33 @@
 package com.dracul.task.viewmodels
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
-import com.dracul.task.di.DaggerInjector
-import com.dracul.task.domain.usecase.GetTickets
-import com.dracul.task.domain.usecase.GetTicketsOffers
-import dagger.Component
-import dagger.Module
-import javax.inject.Inject
+import com.dracul.domain.models.Ticket
+import com.dracul.domain.usecase.GetTicketsUseCase
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 
-@Component(modules = [AllTicketsModule::class], dependencies = [AllTicketsDependencies::class])
-interface AllTicketsComponent {
-    @Component.Builder
-    interface Builder {
-        fun dependencies(dependencies: AllTicketsDependencies): Builder
-        fun build(): AllTicketsComponent
-    }
-
-    fun inject(target: AllTicketsViewModel)
-}
-
-@Module
-class AllTicketsModule
-
-interface AllTicketsDependencies {
-    fun getTickets(): GetTickets
-}
-
-
-class AllTicketsViewModel:ViewModel() {
-    fun navigateBack(navController: NavController) {
-        navController.popBackStack()
-    }
-
-    @Inject
-    lateinit var getTickets: GetTickets
-
-    fun getTickets()=getTickets.execute().tickets
-
+class AllTicketsViewModel(
+    val getTicketsUseCase: GetTicketsUseCase
+):ViewModel() {
+    private val _tickets = MutableStateFlow<List<Ticket>>(emptyList())
+    val tickets = _tickets.asStateFlow()
 
     init {
-        DaggerAllTicketsComponent.builder().dependencies(dependencies = DaggerInjector.appComponent).build().inject(this@AllTicketsViewModel)
+        getTickets()
+    }
+
+    fun getTickets(){
+        viewModelScope.launch {
+            _tickets.emit(getTicketsUseCase.execute().tickets)
+        }
+    }
+
+    fun navigateBack(navController: NavController) {
+        navController.popBackStack()
     }
 
 }

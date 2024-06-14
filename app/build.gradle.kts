@@ -40,6 +40,12 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
+    implementation(project(":data"))
+
+    implementation("com.google.code.gson:gson:2.11.0")
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)

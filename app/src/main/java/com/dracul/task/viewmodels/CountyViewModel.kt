@@ -2,46 +2,27 @@ package com.dracul.task.viewmodels
 
 import android.widget.EditText
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
-import com.dracul.task.di.DaggerInjector
-import com.dracul.task.domain.usecase.GetOffers
-import com.dracul.task.domain.usecase.GetTicketsOffers
+import com.dracul.domain.models.TicketsOffer
+import com.dracul.domain.usecase.GetTicketsOffersUseCase
 import com.dracul.task.screens.ticketsoptions.TicketsOptionsFragmentDirections
-import dagger.Component
-import dagger.Module
 import kotlinx.coroutines.flow.MutableStateFlow
-import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 
-@Component(modules = [CountryModule::class], dependencies = [CountryDependencies::class])
-interface CountryComponent {
-    @Component.Builder
-    interface Builder {
-        fun dependencies(dependencies: CountryDependencies): Builder
-        fun build(): CountryComponent
-    }
-
-    fun inject(target: CountyViewModel)
-}
-
-@Module
-class CountryModule
-
-interface CountryDependencies {
-    fun getTicketsOffers(): GetTicketsOffers
-}
-
-class CountyViewModel : ViewModel() {
-    @Inject
-    lateinit var getTicketsOffers: GetTicketsOffers
+class CountyViewModel(
+    val getTicketsOffersUseCase: GetTicketsOffersUseCase
+) : ViewModel() {
     val backTicketDate = MutableStateFlow(0.toLong())
     val ticketDate = MutableStateFlow(0.toLong())
+    var ticketsOffers: List<TicketsOffer> = emptyList()
 
     init {
-        DaggerCountryComponent.builder().dependencies(dependencies = DaggerInjector.appComponent).build().inject(this@CountyViewModel)
+        viewModelScope.launch {
+            ticketsOffers = getTicketsOffersUseCase.execute().ticketOffers
+        }
     }
-
-    fun getTicketsOffers(index: Int) = getTicketsOffers.execute().tickets_offers[index]
 
     fun setBackTicketDate(timeInMillis: Long) {
         backTicketDate.value = timeInMillis
@@ -62,7 +43,13 @@ class CountyViewModel : ViewModel() {
 
     }
 
-    fun navigateToAllTickets(navController: NavController, from: String, to: String, date: String, passengers: String) {
+    fun navigateToAllTickets(
+        navController: NavController,
+        from: String,
+        to: String,
+        date: String,
+        passengers: String
+    ) {
         val action = TicketsOptionsFragmentDirections.actionAllTickets(
             to, from, date, passengers
         )

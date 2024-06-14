@@ -1,10 +1,10 @@
 package com.dracul.task.screens.main.recycler
 
-import androidx.recyclerview.widget.ListAdapter
-import com.dracul.task.domain.models.Offer
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.dracul.domain.models.Offer
 import com.dracul.task.R
 import com.dracul.task.databinding.ItemOfferBinding
 

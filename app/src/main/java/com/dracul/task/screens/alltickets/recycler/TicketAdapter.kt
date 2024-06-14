@@ -8,10 +8,9 @@ import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.dracul.domain.models.Ticket
 import com.dracul.task.R
 import com.dracul.task.databinding.ItemTicketBinding
-import com.dracul.task.domain.models.Price
-import com.dracul.task.domain.models.Ticket
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

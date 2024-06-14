@@ -12,16 +12,15 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.text.toSpannable
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.dracul.task.R
 import com.dracul.task.databinding.FragmentTicketsOptionsBinding
-import com.dracul.task.domain.models.Price
 import com.dracul.task.viewmodels.CountyViewModel
 import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -31,13 +30,15 @@ class TicketsOptionsFragment : Fragment() {
 
 
     private lateinit var binding: FragmentTicketsOptionsBinding
-    private val viewModel by viewModels<CountyViewModel>()
-    private val dateBackPicker = MaterialDatePicker.Builder.datePicker().setTitleText("Select date").setSelection(
-        MaterialDatePicker.todayInUtcMilliseconds()
-    ).build()
-    private val datePicker = MaterialDatePicker.Builder.datePicker().setTitleText("Select date").setSelection(
-        MaterialDatePicker.todayInUtcMilliseconds()
-    ).build()
+    private val viewModel by viewModel<CountyViewModel>()
+    private val dateBackPicker =
+        MaterialDatePicker.Builder.datePicker().setTitleText("Select date").setSelection(
+            MaterialDatePicker.todayInUtcMilliseconds()
+        ).build()
+    private val datePicker =
+        MaterialDatePicker.Builder.datePicker().setTitleText("Select date").setSelection(
+            MaterialDatePicker.todayInUtcMilliseconds()
+        ).build()
 
     private val calendar = Calendar.getInstance()
     override fun onCreateView(
@@ -52,7 +53,7 @@ class TicketsOptionsFragment : Fragment() {
         binding.etFrom.setText(from)
         binding.run {
 
-            lifecycleScope.launch {
+            viewLifecycleOwner.lifecycleScope.launch {
                 viewModel.backTicketDate.collect {
                     if (it != 0.toLong()) {
                         calendar.timeInMillis = it
@@ -60,7 +61,7 @@ class TicketsOptionsFragment : Fragment() {
                     }
                 }
             }
-            lifecycleScope.launch {
+            viewLifecycleOwner.lifecycleScope.launch {
                 viewModel.ticketDate.collect {
                     if (it != 0.toLong()) {
                         calendar.timeInMillis = it
@@ -107,22 +108,25 @@ class TicketsOptionsFragment : Fragment() {
             }
 
             item1.run {
-                val ticketsOffer = viewModel.getTicketsOffers(0)
-                ivCircle.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.red))
+                val ticketsOffer = viewModel.ticketsOffers.get(0)
+                ivCircle.imageTintList =
+                    ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.red))
                 tvTitle.text = ticketsOffer.title
                 tvPrice.text = "${ticketsOffer.price.getSplitted()} ₽ "
                 tvTimeRange.text = ticketsOffer.timeRange.concatStrings()
             }
             item2.run {
-                val ticketsOffer = viewModel.getTicketsOffers(1)
-                ivCircle.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue))
+                val ticketsOffer = viewModel.ticketsOffers.get(1)
+                ivCircle.imageTintList =
+                    ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue))
                 tvTitle.text = ticketsOffer.title
                 tvPrice.text = "${ticketsOffer.price.getSplitted()} ₽ "
                 tvTimeRange.text = ticketsOffer.timeRange.concatStrings()
             }
             item3.run {
-                val ticketsOffer = viewModel.getTicketsOffers(2)
-                ivCircle.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
+                val ticketsOffer = viewModel.ticketsOffers.get(2)
+                ivCircle.imageTintList =
+                    ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
                 tvTitle.text = ticketsOffer.title
                 tvPrice.text = "${ticketsOffer.price.getSplitted()} ₽ "
                 tvTimeRange.text = ticketsOffer.timeRange.concatStrings()
@@ -162,7 +166,7 @@ class TicketsOptionsFragment : Fragment() {
 
     private fun List<String>.concatStrings(): String {
         var result = ""
-        for (i in this) result += i + " "
+        for (i in this) result += "$i "
         return result
     }
 

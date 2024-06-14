@@ -2,48 +2,36 @@ package com.dracul.task.viewmodels
 
 import android.widget.EditText
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
-import com.dracul.task.R
-import com.dracul.task.di.DaggerInjector
-import com.dracul.task.domain.usecase.GetOffers
-import com.dracul.task.screens.main.MainFragment
+import com.dracul.domain.models.Offer
+import com.dracul.domain.usecase.GetOffersUseCase
 import com.dracul.task.screens.main.MainFragmentDirections
-import dagger.Component
-import dagger.Module
 import kotlinx.coroutines.flow.MutableStateFlow
-import javax.inject.Inject
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 
-@Component(modules = [MainModule::class], dependencies = [MainDependencies::class])
-interface MainComponent {
-    @Component.Builder
-    interface Builder {
-        fun dependencies(dependencies: MainDependencies): Builder
-        fun build(): MainComponent
-    }
+class MainViewModel(
+    val getOffersUseCase: GetOffersUseCase
+) : ViewModel() {
 
-    fun inject(target: MainViewModel)
-}
+    private val _offers = MutableStateFlow<List<Offer>>(emptyList())
+    val offers = _offers.asStateFlow()
 
-@Module
-class MainModule
-
-interface MainDependencies {
-    fun getOffers(): GetOffers
-}
-
-
-class MainViewModel : ViewModel() {
-    @Inject
-    lateinit var getOffers: GetOffers
     val isBottomsheetVisible = MutableStateFlow(false)
 
     init {
-        DaggerMainComponent.builder().dependencies(dependencies = DaggerInjector.appComponent).build().inject(this@MainViewModel)
+        getOffersList()
     }
 
-    fun getOffersList() = getOffers.execute().offers
+
+    private fun getOffersList() {
+        viewModelScope.launch {
+            _offers.emit(getOffersUseCase.execute().offers)
+        }
+    }
+
     fun setAnywhere(edTo: EditText, place: String) {
         edTo.setText(place)
     }
@@ -65,7 +53,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun navigateToTicketsOption(navController: NavController, from: String, to: String) {
-        navController.navigate(MainFragmentDirections.actionTicketsOptions(from,to))
+        navController.navigate(MainFragmentDirections.actionTicketsOptions(from, to))
     }
 
 
