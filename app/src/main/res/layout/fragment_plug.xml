@@ -35,7 +35,7 @@
             android:textColor="@color/white"
             android:backgroundTint="@color/grey_3"
             android:text="@string/back"
-            app:rippleColor="@color/grey_6"
+            app:rippleColor="@color/grey_5"
             />
 
 

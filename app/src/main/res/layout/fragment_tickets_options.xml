@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".screens.ticketsoptions.TicketsOptionsFragment"
-    >
+    tools:context=".screens.ticketsoptions.TicketsOptionsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_child"
@@ -22,36 +19,31 @@
             android:layout_margin="16dp"
             android:padding="16dp"
             app:cardBackgroundColor="@color/grey_3"
-            app:cardCornerRadius="16dp"
-            >
+            app:cardCornerRadius="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="16dp"
-                >
+                android:padding="16dp">
 
                 <ImageView
                     android:id="@+id/iv_back_arrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:src="@drawable/ic_left_arrow"
-                    />
+                    android:src="@drawable/ic_left_arrow" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/et_from"
@@ -62,28 +54,24 @@
                             android:fontFamily="@font/sf_pro_regular"
                             android:textColor="@color/white"
                             android:textFontWeight="600"
-                            android:textSize="16sp"
-                            />
+                            android:textSize="16sp" />
 
                         <ImageView
                             android:id="@+id/iv_change"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_change"
-                            />
+                            android:src="@drawable/ic_change" />
                     </LinearLayout>
 
                     <com.google.android.material.divider.MaterialDivider
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:dividerColor="@color/grey_4"
-                        />
+                        app:dividerColor="@color/grey_4" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/et_to"
@@ -94,15 +82,13 @@
                             android:fontFamily="@font/sf_pro_regular"
                             android:textColor="@color/white"
                             android:textFontWeight="600"
-                            android:textSize="16sp"
-                            />
+                            android:textSize="16sp" />
 
                         <ImageView
                             android:id="@+id/iv_clear"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_close"
-                            />
+                            android:src="@drawable/ic_close" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -111,28 +97,24 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:scrollbars="none"
-            >
+            android:scrollbars="none">
 
             <com.google.android.material.chip.ChipGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:singleLine="true"
-                >
+                app:singleLine="true">
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chp_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:text="@string/chip_back"
                     android:textColor="@color/white"
                     app:chipBackgroundColor="@color/grey_3"
                     app:chipCornerRadius="50dp"
-
                     app:chipIcon="@drawable/ic_plus"
-                    app:chipStrokeWidth="0dp"
-                    />
+                    app:chipStrokeWidth="0dp" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chp_date"
@@ -144,8 +126,7 @@
                     app:chipBackgroundColor="@color/grey_3"
                     app:chipCornerRadius="50dp"
                     app:chipStrokeWidth="0dp"
-                    tools:text="24 фев, сб"
-                    />
+                    tools:text="24 фев, сб" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chp_passengers"
@@ -157,21 +138,20 @@
                     app:chipBackgroundColor="@color/grey_3"
                     app:chipCornerRadius="50dp"
                     app:chipIcon="@drawable/ic_human"
-                    app:chipStrokeWidth="0dp"
-                    />
+                    app:chipStrokeWidth="0dp" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chp_settings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
                     android:background="@drawable/chip"
-                    android:text="@string/map"
+                    android:text="@string/filter"
                     android:textColor="@color/white"
                     app:chipBackgroundColor="@color/grey_3"
                     app:chipCornerRadius="50dp"
                     app:chipIcon="@drawable/ic_filter"
-                    app:chipStrokeWidth="0dp"
-                    />
+                    app:chipStrokeWidth="0dp" />
             </com.google.android.material.chip.ChipGroup>
         </HorizontalScrollView>
 
@@ -181,15 +161,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             app:cardBackgroundColor="@color/grey_1"
-            app:cardCornerRadius="16dp"
-            >
+            app:cardCornerRadius="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="16dp"
-                >
+                android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -199,36 +177,16 @@
                     android:fontFamily="@font/sf_pro_sembold"
                     android:text="Прямые рельсы"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    />
+                    android:textSize="20sp" />
 
-                <include
-                    android:id="@+id/item1"
-                    layout="@layout/item_popular_direction"
-                    />
-
-                <include
-                    android:id="@+id/item2"
-                    layout="@layout/item_popular_direction"
-                    />
-
-                <include
-                    android:id="@+id/item3"
-                    layout="@layout/item_popular_direction"
-                    />
-
-                <TextView
-                    android:id="@+id/btn_show_all"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_tickets_offers"
                     android:layout_width="match_parent"
-                    android:layout_height="42dp"
-                    android:fontFamily="@font/sf_pro_regular"
-                    android:gravity="center"
-                    android:text="@string/show_all"
-                    android:textColor="@color/blue"
-                    android:textFontWeight="600"
-                    android:textSize="16sp"
-                    tools:text="Показать все"
-                    />
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="true"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -239,13 +197,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:backgroundTint="@color/blue"
-            android:text="@string/see_all_tickets"
-            android:textSize="16sp"
-            app:cornerRadius="8dp"
-            android:textColor="@color/white"
-            android:textStyle="italic"
             android:fontFamily="@font/sf_pro_regular"
-            />
+            android:text="@string/see_all_tickets"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:cornerRadius="8dp" />
 
     </LinearLayout>
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

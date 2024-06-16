@@ -6,7 +6,7 @@ import com.dracul.task.domain.repository.GetTicketsOffersRepo
 class GetTicketsOffersUseCase(
     val repository: GetTicketsOffersRepo
 ) {
-    suspend fun execute(): TicketsOffers {
+    suspend fun execute(): Result<TicketsOffers> {
         return repository.get()
     }
 }

@@ -6,7 +6,7 @@ import com.dracul.data.repository.GetTicketsOffersImpl
 import com.dracul.data.storage.NetworkOffersStorage
 import com.dracul.data.storage.NetworkTicketsOffersStorage
 import com.dracul.data.storage.NetworkTicketsStorage
-import com.dracul.task.domain.repository.GetOffersRepo
+import com.dracul.domain.repository.GetOffersRepo
 import com.dracul.task.domain.repository.GetTicketsOffersRepo
 import com.dracul.task.domain.repository.GetTicketsRepo
 import com.example.data.api.TicketApi

@@ -13,16 +13,19 @@ val appModule = module {
     viewModel {
         AllTicketsViewModel(
             getTicketsUseCase = get(),
-            )
+            context = get(),
+        )
     }
     viewModel {
         MainViewModel(
-            getOffersUseCase = get()
+            getOffersUseCase = get(),
+            context = get()
         )
     }
-    viewModel{
+    viewModel {
         CountyViewModel(
-            getTicketsOffersUseCase = get()
+            getTicketsOffersUseCase = get(),
+            context = get(),
         )
     }
 

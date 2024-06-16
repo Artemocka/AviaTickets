@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dracul.domain.models.Offer
 import com.dracul.task.R
 import com.dracul.task.databinding.ItemOfferBinding
+import com.dracul.task.screens.ticketsoptions.recycler.TicketsOfferAdapter
 
 
 class OfferAdapter : ListAdapter<Offer, OfferAdapter.ViewHolder>(OfferItemCallBack()) {
@@ -30,6 +31,8 @@ class OfferAdapter : ListAdapter<Offer, OfferAdapter.ViewHolder>(OfferItemCallBa
         return viewHolder
 
     }
+
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = currentList[position]

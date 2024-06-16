@@ -7,7 +7,7 @@ import com.dracul.task.domain.repository.GetTicketsRepo
 class GetTicketsImpl (
     val networkTicketsStorage: NetworkTicketsStorage
 ):GetTicketsRepo {
-    override suspend fun get(): Tickets {
+    override suspend fun get(): Result<Tickets> {
         return networkTicketsStorage.get()
     }
 }

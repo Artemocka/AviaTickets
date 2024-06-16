@@ -10,6 +10,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.FrameLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -18,6 +21,8 @@ import com.dracul.task.databinding.FragmentMainBinding
 import com.dracul.task.screens.main.recycler.OfferAdapter
 import com.dracul.task.viewmodels.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,7 +32,7 @@ class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private val viewModel by viewModel<MainViewModel>()
     private val adapter = OfferAdapter()
-
+    private var snackbar: Snackbar? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycleScope.launch {
@@ -42,6 +47,25 @@ class MainFragment : Fragment() {
     ): View {
         binding = FragmentMainBinding.inflate(layoutInflater)
 
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
+            WindowInsetsCompat.Builder(insets)
+                .setInsets(WindowInsetsCompat.Type.navigationBars(), Insets.NONE)
+                .build()
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.errorMessage.collect { message ->
+                if (message != null) {
+                    snackbar = Snackbar.make(binding.root, message, Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Retry") { viewModel.retry() }.setAnimationMode(
+                            BaseTransientBottomBar.ANIMATION_MODE_SLIDE
+                        )
+                    snackbar?.show()
+
+                } else {
+                    snackbar?.dismiss()
+                }
+            }
+        }
         lifecycleScope.launch {
             viewModel.isBottomsheetVisible.collect {
                 when (it) {

@@ -27,5 +27,10 @@
     <string name="subsciptions">Подписки</string>
     <string name="coroche">Короче</string>
     <string name="hotels">Отели</string>
+    <string name="no_internet_connections">Отсуствует интернет соединение!</string>
+    <string name="bad_internet_connections">Плохое интернет соединение!</string>
+    <string name="unknown_error">Что то пошло не так!</string>
+    <string name="reload">Reload</string>
+
 
 </resources>
