@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dracul.domain.models.Ticket
 import com.dracul.task.R
 import com.dracul.task.databinding.ItemTicketBinding
+import com.dracul.task.screens.alltickets.recycler.TicketItemCallBack
 import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.Locale
 import kotlin.math.roundToInt
 
@@ -68,7 +68,7 @@ class TicketAdapter : ListAdapter<Ticket, TicketAdapter.ViewHolder>(TicketItemCa
                     tvTransfer.text="Без пересадок"
                 }
 
-                tvPrice.text = "${item.price.getSplitted()} ₽ "
+                tvPrice.text = "${item.price.getSplitted()} ₽"+"\u00A0"
             }
         }
 

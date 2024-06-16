@@ -15,13 +15,13 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-//Я считаю что usecase долнжыть инжектиться во вью модель, так по моему мнению правильно
+//Я считаю что usecase долнжы инжектиться во вью модель, так по моему мнению правильно
 class CountyViewModel(
     val getTicketsOffersUseCase: GetTicketsOffersUseCase,
     val context: Context,
 ) : ViewModel() {
     private var _ticketsOffers = MutableStateFlow<List<TicketsOffer>>(emptyList())
-    var _errorMessage = MutableSharedFlow<String?>()
+    private var _errorMessage = MutableSharedFlow<String?>()
 
     var ticketsOffers = _ticketsOffers.asStateFlow()
     var errorMessage = _errorMessage.asSharedFlow()
@@ -78,6 +78,11 @@ class CountyViewModel(
 
     fun retry() {
         getTicketsOffers()
+    }
+
+    fun navigatetoFilter(navController: NavController) {
+        val action = TicketsOptionsFragmentDirections.actionFilter()
+        navController.navigate(action)
     }
 }
 

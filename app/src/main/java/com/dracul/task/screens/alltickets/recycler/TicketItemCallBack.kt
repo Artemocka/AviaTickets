@@ -1,4 +1,4 @@
-package com.dracul.task.screens.main.recycler
+package com.dracul.task.screens.alltickets.recycler
 
 import androidx.recyclerview.widget.DiffUtil
 import com.dracul.domain.models.Ticket

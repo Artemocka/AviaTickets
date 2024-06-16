@@ -2,6 +2,7 @@
 agp = "8.4.2"
 daggerCompilerVersion = "2.51.1"
 daggerVersion = "2.51.1"
+gson = "2.11.0"
 kotlin = "1.9.22"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -12,6 +13,7 @@ material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
 navigationFragmentKtx = "2.7.7"
+preferenceKtx = "1.2.1"
 retrofit = "2.11.0"
 jetbrainsKotlinJvm = "1.9.23"
 koin = "3.5.0"
@@ -20,9 +22,11 @@ koin = "3.5.0"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationFragmentKtx" }
+androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceKtx" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 dagger-compiler-v2511 = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerCompilerVersion" }
 dagger-v2511 = { module = "com.google.dagger:dagger", version.ref = "daggerVersion" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

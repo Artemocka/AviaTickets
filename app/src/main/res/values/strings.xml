@@ -31,6 +31,12 @@
     <string name="bad_internet_connections">Плохое интернет соединение!</string>
     <string name="unknown_error">Что то пошло не так!</string>
     <string name="reload">Reload</string>
+    <string name="retry">Повторить</string>
+    <string name="filters">Фильтры</string>
+    <string name="transfer">Пересадки</string>
+    <string name="no_transfer">Без пересадок</string>
+    <string name="with_transfer">Только с багажом</string>
+    <string name="done">Готово</string>
 
 
 </resources>

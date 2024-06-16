@@ -79,7 +79,8 @@ class TicketsOptionsFragment : Fragment() {
                 viewModel.errorMessage.collect { message ->
                     if (message != null) {
                         snackbar = Snackbar.make(binding.root, message, Snackbar.LENGTH_INDEFINITE)
-                            .setAction("Retry") { viewModel.retry() }.setAnimationMode(
+                            .setAction(getString(R.string.retry)) { viewModel.retry() }
+                            .setAnimationMode(
                                 BaseTransientBottomBar.ANIMATION_MODE_SLIDE
                             )
                         snackbar?.show()
@@ -115,6 +116,11 @@ class TicketsOptionsFragment : Fragment() {
                     dateBackPicker.show(childFragmentManager, "datePicker")
                 }
             }
+
+            chpSettings.setOnClickListener {
+                viewModel.navigatetoFilter(findNavController())
+            }
+
             chpPassengers.setItalic()
             chpSettings.setItalic()
             chpDate.setOnClickListener {

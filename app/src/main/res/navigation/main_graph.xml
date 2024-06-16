@@ -82,6 +82,9 @@
             app:popEnterAnim="@anim/fragment_enter_scale"
             app:popExitAnim="@anim/fragment_exit_scale"
             />
+        <action
+            android:id="@+id/actionFilter"
+            app:destination="@id/filterFragment" />
     </fragment>
     <fragment
         android:id="@+id/allTicketsFragment"
@@ -106,4 +109,9 @@
             app:argType="string"
             />
     </fragment>
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="com.dracul.task.screens.filter.FilterFragment"
+        android:label="fragment_filter"
+        tools:layout="@layout/fragment_filter" />
 </navigation>

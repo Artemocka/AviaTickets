@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.dracul.task.R
 import com.dracul.task.databinding.FragmentAllTicketsBinding
 import com.dracul.task.screens.main.recycler.TicketAdapter
 import com.dracul.task.viewmodels.AllTicketsViewModel
@@ -54,9 +55,8 @@ class AllTicketsFragment : Fragment() {
                 vm.errorMessage.collect { message ->
                     if (message != null) {
                         snackbar = Snackbar.make(binding.root, message, Snackbar.LENGTH_INDEFINITE)
-                            .setAction("Retry") { vm.retry() }.setAnimationMode(
-                                 BaseTransientBottomBar.ANIMATION_MODE_SLIDE
-                            )
+                            .setAction(getString(R.string.retry)) { vm.retry() }
+                            .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE)
                         snackbar?.show()
                     } else {
                         snackbar?.dismiss()
